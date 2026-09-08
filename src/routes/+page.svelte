@@ -13,12 +13,21 @@
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import * as Table from "$lib/components/ui/table/index.js";
 	import { Separator } from "$lib/components/ui/separator/index.js";
-
-	let dark = $state(false);
-
-	$effect(() => {
-		document.documentElement.classList.toggle("dark", dark);
-	});
+	import * as Alert from "$lib/components/ui/alert/index.js";
+	import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
+	import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
+	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+	import { RadioGroup, RadioGroupItem } from "$lib/components/ui/radio-group/index.js";
+	import { Progress } from "$lib/components/ui/progress/index.js";
+	import * as ContextMenu from "$lib/components/ui/context-menu/index.js";
+	import * as Popover from "$lib/components/ui/popover/index.js";
+	import { Textarea } from "$lib/components/ui/textarea/index.js";
+	import { Icon } from "$lib/components/ui/icon/index.js";
+	import { NonIdealState } from "$lib/components/ui/non-ideal-state/index.js";
+	import { ControlGroup } from "$lib/components/ui/control-group/index.js";
+	import { toast } from "$lib/components/ui/sonner/index.js";
+	import { config } from "$lib/config.svelte";
+	import { Search, Settings, Trash2, Inbox } from "@lucide/svelte";
 
 	const fruit = ["Apple", "Banana", "Cherry"];
 	let selectedFruit = $state("Apple");
@@ -28,14 +37,16 @@
 		{ id: "INV002", status: "Pending", amount: "$150.00" },
 		{ id: "INV003", status: "Overdue", amount: "$350.00" },
 	];
+
+	let radioValue = $state("a");
 </script>
 
 <Tooltip.Provider>
 	<div class="mx-auto max-w-4xl space-y-12 p-8">
 		<div class="flex items-center justify-between">
 			<h1 class="text-lg font-semibold">Blueprint component showcase</h1>
-			<Button variant="outline" size="sm" onclick={() => (dark = !dark)}>
-				{dark ? "Switch to light" : "Switch to dark"}
+			<Button variant="outline" size="sm" onclick={() => config.toggleColorScheme()}>
+				{config.colorScheme === "dark" ? "Switch to light" : "Switch to dark"}
 			</Button>
 		</div>
 
@@ -235,6 +246,237 @@
 					</Tooltip.Trigger>
 					<Tooltip.Content>Blueprint-styled tooltip</Tooltip.Content>
 				</Tooltip.Root>
+			</div>
+		</section>
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Alert</h2>
+			<div class="grid max-w-sm gap-3">
+				<Alert.Root>
+					<Alert.Title>Heads up</Alert.Title>
+					<Alert.Description>This is a default callout.</Alert.Description>
+				</Alert.Root>
+				<Alert.Root variant="destructive">
+					<Alert.Title>Something went wrong</Alert.Title>
+					<Alert.Description>This is a tinted destructive callout.</Alert.Description>
+				</Alert.Root>
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Breadcrumb</h2>
+			<Breadcrumb.Root>
+				<Breadcrumb.List>
+					<Breadcrumb.Item><Breadcrumb.Link href="#">Home</Breadcrumb.Link></Breadcrumb.Item>
+					<Breadcrumb.Separator />
+					<Breadcrumb.Item><Breadcrumb.Link href="#">Components</Breadcrumb.Link></Breadcrumb.Item>
+					<Breadcrumb.Separator />
+					<Breadcrumb.Item><Breadcrumb.Page>Current</Breadcrumb.Page></Breadcrumb.Item>
+				</Breadcrumb.List>
+			</Breadcrumb.Root>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Collapsible</h2>
+			<Collapsible.Root class="max-w-sm">
+				<Collapsible.Trigger>
+					{#snippet child({ props })}
+						<Button variant="outline" size="sm" {...props}>Toggle details</Button>
+					{/snippet}
+				</Collapsible.Trigger>
+				<Collapsible.Content class="pt-2 text-xs text-muted-foreground">
+					Additional detail revealed by the collapsible.
+				</Collapsible.Content>
+			</Collapsible.Root>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Radio Group &amp; Progress</h2>
+			<div class="flex flex-wrap items-start gap-12">
+				<RadioGroup bind:value={radioValue}>
+					<div class="flex items-center gap-2">
+						<RadioGroupItem value="a" id="radio-a" />
+						<Label for="radio-a">Option A</Label>
+					</div>
+					<div class="flex items-center gap-2">
+						<RadioGroupItem value="b" id="radio-b" />
+						<Label for="radio-b">Option B</Label>
+					</div>
+				</RadioGroup>
+				<Progress value={45} class="w-48" />
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">
+				Context Menu, Popover &amp; Alert Dialog
+			</h2>
+			<div class="flex flex-wrap items-center gap-2">
+				<ContextMenu.Root>
+					<ContextMenu.Trigger
+						class="flex h-16 w-40 items-center justify-center border border-border text-xs text-muted-foreground"
+					>
+						Right click me
+					</ContextMenu.Trigger>
+					<ContextMenu.Content>
+						<ContextMenu.Item>Profile</ContextMenu.Item>
+						<ContextMenu.Item>Settings</ContextMenu.Item>
+						<ContextMenu.Separator />
+						<ContextMenu.Item>Log out</ContextMenu.Item>
+					</ContextMenu.Content>
+				</ContextMenu.Root>
+
+				<Popover.Root>
+					<Popover.Trigger>
+						{#snippet child({ props })}
+							<Button variant="outline" {...props}>Open popover</Button>
+						{/snippet}
+					</Popover.Trigger>
+					<Popover.Content>
+						<Popover.Title>Popover title</Popover.Title>
+						<Popover.Description>Popover body text.</Popover.Description>
+					</Popover.Content>
+				</Popover.Root>
+
+				<AlertDialog.Root>
+					<AlertDialog.Trigger>
+						{#snippet child({ props })}
+							<Button variant="destructive" {...props}>Delete account</Button>
+						{/snippet}
+					</AlertDialog.Trigger>
+					<AlertDialog.Content>
+						<AlertDialog.Header>
+							<AlertDialog.Title>Are you sure?</AlertDialog.Title>
+							<AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
+						</AlertDialog.Header>
+						<AlertDialog.Footer>
+							<AlertDialog.Cancel>
+								{#snippet child({ props })}
+									<Button variant="outline" {...props}>Cancel</Button>
+								{/snippet}
+							</AlertDialog.Cancel>
+							<AlertDialog.Action>
+								{#snippet child({ props })}
+									<Button variant="destructive" {...props}>Confirm</Button>
+								{/snippet}
+							</AlertDialog.Action>
+						</AlertDialog.Footer>
+					</AlertDialog.Content>
+				</AlertDialog.Root>
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Textarea</h2>
+			<div class="grid max-w-sm gap-1.5">
+				<Label for="message">Message</Label>
+				<Textarea id="message" placeholder="Type your message here" />
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Icon &amp; Icon Button</h2>
+			<div class="flex flex-wrap items-center gap-4">
+				<Icon icon={Search} />
+				<Icon icon={Settings} intent="primary" />
+				<Icon icon={Trash2} intent="danger" size="large" />
+				<Button variant="outline" size="icon" aria-label="Search">
+					<Icon icon={Search} />
+				</Button>
+				<Button variant="ghost" size="icon-sm" aria-label="Settings">
+					<Icon icon={Settings} />
+				</Button>
+				<Button variant="destructive" size="icon-lg" aria-label="Delete">
+					<Icon icon={Trash2} />
+				</Button>
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Non-Ideal State</h2>
+			<div class="max-w-sm border border-border">
+				<NonIdealState
+					icon={Inbox}
+					title="No results"
+					description="Try adjusting your filters or search terms."
+				>
+					{#snippet action()}
+						<Button variant="outline" size="sm">Clear filters</Button>
+					{/snippet}
+				</NonIdealState>
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Control Group</h2>
+			<div class="flex flex-wrap items-start gap-6">
+				<ControlGroup>
+					<Button variant="outline">Left</Button>
+					<Button variant="outline">Middle</Button>
+					<Button variant="outline">Right</Button>
+				</ControlGroup>
+
+				<ControlGroup>
+					<Button variant="outline" size="icon" aria-label="Search">
+						<Icon icon={Search} />
+					</Button>
+					<Input placeholder="Search…" class="w-48" />
+				</ControlGroup>
+
+				<ControlGroup vertical>
+					<Button variant="outline">Top</Button>
+					<Button variant="outline">Bottom</Button>
+				</ControlGroup>
+			</div>
+		</section>
+
+		<Separator />
+
+		<section class="space-y-3">
+			<h2 class="text-sm font-semibold text-muted-foreground">Toast</h2>
+			<div class="flex flex-wrap gap-2">
+				<Button variant="outline" onclick={() => toast("Event has been created")}>Default</Button
+				>
+				<Button
+					variant="outline"
+					onclick={() => toast.success("Changes saved", { description: "Your profile is up to date." })}
+					>Success</Button
+				>
+				<Button
+					variant="outline"
+					onclick={() => toast.warning("Storage almost full", { description: "You are at 90% of your quota." })}
+					>Warning</Button
+				>
+				<Button
+					variant="outline"
+					onclick={() => toast.error("Upload failed", { description: "Check your connection and try again." })}
+					>Error</Button
+				>
+				<Button
+					variant="outline"
+					onclick={() =>
+						toast("New message", {
+							description: "You have an unread message from support.",
+							action: { label: "View", onClick: () => toast("Opened message") },
+						})}>With action</Button
+				>
 			</div>
 		</section>
 	</div>

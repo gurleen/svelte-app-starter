@@ -4,18 +4,18 @@ This project's shadcn-svelte components (`src/lib/components/ui/`) are restyled 
 [Blueprint](https://github.com/palantir/blueprint), Palantir's design system. This document
 records the mapping so new components can be styled consistently without re-deriving it.
 
-## Deliberate deviations from stock Blueprint
+## Button fidelity
 
-- **Border radius is `0`, not Blueprint's native ~2-4px.** The first component built in this
-  repo (`Button`) already committed to sharp corners across every variant (`rounded-none`
-  hardcoded, `--radius: 0rem`). Reintroducing Blueprint's small radius would mean touching
-  every hand-added `rounded-none` literal for a barely-perceptible visual change. Treat zero
-  radius as this project's own design variant layered on top of Blueprint's colors/spacing —
-  don't "fix" it later.
-- **Font is IBM Plex Sans Variable, not Blueprint's system font stack.** Blueprint defaults to
-  `-apple-system, "Segoe UI", ...` so Palantir's internal tools inherit the OS look for free.
-  This project already bundles and imports IBM Plex Sans Variable for consistent cross-platform
-  rendering, which is a stronger choice here than chasing OS-native fonts.
+Buttons now follow the deployed Blueprint 6 documentation: 4px corners, 14px normal text, 30px default / 24px small / 40px large minimum heights,
+8px icon gaps, inset borders, and Blueprint's hover, active, disabled, and dark states.
+`default` retains shadcn's primary intent mapping; `secondary` is Blueprint's neutral
+button, `ghost` is minimal, and `outline` is outlined. Danger and success use solid
+fills; warning uses Blueprint's lighter orange with dark text. `xs` and `link` remain
+project extensions. Button state colors live in `button.css` because the global dark
+semantic tokens are not the colors Blueprint uses for filled buttons.
+
+IBM Plex Sans is the intentional font difference from Blueprint, including on buttons.
+Other components have not been audited in this button correction.
 
 ## Color tokens
 
@@ -67,7 +67,7 @@ spacing scale — use standard Tailwind spacing utilities, no custom config need
 
 ## Border radius
 
-Fixed at `0` (`--radius: 0rem`) everywhere. See "Deliberate deviations" above.
+Global radius remains `0`; buttons explicitly use Blueprint’s 4px radius.
 
 ## Elevation / shadows
 
