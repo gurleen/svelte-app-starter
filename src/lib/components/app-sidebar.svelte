@@ -1,5 +1,8 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import { config } from '$lib/config.svelte.js';
+	import SunIcon from '@lucide/svelte/icons/sun';
+	import MoonIcon from '@lucide/svelte/icons/moon';
 
 	const navItems = [{ title: 'Home', href: '/' }];
 </script>
@@ -23,4 +26,15 @@
 			</Sidebar.GroupContent>
 		</Sidebar.Group>
 	</Sidebar.Content>
+	<Sidebar.Footer>
+		<Sidebar.MenuButton onclick={() => config.toggleColorScheme()}>
+			{#if config.colorScheme === 'dark'}
+				<MoonIcon />
+				<span>Dark mode</span>
+			{:else}
+				<SunIcon />
+				<span>Light mode</span>
+			{/if}
+		</Sidebar.MenuButton>
+	</Sidebar.Footer>
 </Sidebar.Root>

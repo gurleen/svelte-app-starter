@@ -14,11 +14,16 @@
 <div class="flex h-svh flex-col">
 	<AppMenubar />
 	<Sidebar.Provider
-		class="min-h-0 flex-1 overflow-hidden [&_[data-slot=sidebar-container]]:top-8 [&_[data-slot=sidebar-container]]:h-[calc(100svh-var(--spacing)*8)]"
+		class="min-h-0 flex-1 overflow-hidden sm:[&_[data-slot=sidebar-container]]:top-8 sm:[&_[data-slot=sidebar-container]]:h-[calc(100svh-var(--spacing)*8)]"
 	>
 		<AppSidebar />
-		<Sidebar.Inset>
-			{@render children()}
+		<Sidebar.Inset class="min-h-0">
+			<div class="flex items-center gap-2 border-b border-border p-2">
+				<Sidebar.Trigger />
+			</div>
+			<div class="min-h-0 flex-1 overflow-y-auto">
+				{@render children()}
+			</div>
 		</Sidebar.Inset>
 	</Sidebar.Provider>
 </div>

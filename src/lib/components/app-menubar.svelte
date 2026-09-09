@@ -2,7 +2,7 @@
 	import * as Menubar from '$lib/components/ui/menubar/index.js';
 </script>
 
-<Menubar.Root class="relative z-20 w-full rounded-none border-x-0 border-t-0">
+<Menubar.Root class="relative z-20 hidden w-full rounded-none border-x-0 border-t-0 sm:flex">
 	<Menubar.Menu>
 		<Menubar.Trigger>File</Menubar.Trigger>
 		<Menubar.Content>
