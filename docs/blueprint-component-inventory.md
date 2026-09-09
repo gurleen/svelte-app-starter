@@ -35,6 +35,8 @@ the trip, and what's left in Blueprint's own component set.
 | `non-ideal-state` | NonIdealState | No |
 | `control-group` | ControlGroup | No |
 | `sonner` | Toast / OverlayToaster | No |
+| `spinner` | Spinner | No |
+| `text` | Text | No |
 
 "Style-guide audited" means the component has been checked against Blueprint's own docs
 dimension-by-dimension (sizing, spacing, states) the way `button.svelte` was. Everything else
@@ -54,9 +56,7 @@ so far only inherits the shared color/spacing/radius/elevation/typography tokens
 | OverflowList | — | Build from scratch (no shadcn/Radix equivalent; measurement-driven layout) |
 | Panel / PanelStack | — | Build from scratch (stacked navigable panel view, no shadcn primitive) |
 | Slider / RangeSlider / MultiSlider | Slider | Use existing shadcn component, restyle (MultiSlider needs extension work) |
-| Spinner | Skeleton (different purpose) / none | Build from scratch (simple SVG spinner; no direct shadcn equivalent) |
 | Tag / TagInput (input variant) | Badge (Tag done) / InputOTP-style combo | Combine — `input` plus removable `badge` chips for TagInput |
-| Text | — | Build from scratch (typography wrapper is trivial, no dependency needed) |
 | Tree | — | Build from scratch or additional dependency (no shadcn primitive; consider a headless tree library) |
 | **From `@blueprintjs/select`** | | |
 | Select (searchable) | Combobox | Use existing shadcn component, restyle |
