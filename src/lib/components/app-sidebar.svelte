@@ -4,7 +4,10 @@
 	import SunIcon from '@lucide/svelte/icons/sun';
 	import MoonIcon from '@lucide/svelte/icons/moon';
 
-	const navItems = [{ title: 'Home', href: '/' }];
+	const navItems = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Showcase', href: '/showcase' }
+	];
 </script>
 
 <Sidebar.Root collapsible="icon">

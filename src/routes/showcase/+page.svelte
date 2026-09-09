@@ -12,6 +12,7 @@
 	import TabsSection from "./showcase-sections/tabs-section.svelte";
 	import CardSection from "./showcase-sections/card-section.svelte";
 	import TableSection from "./showcase-sections/table-section.svelte";
+	import DataTableSection from "./showcase-sections/data-table-section.svelte";
 	import DialogDropdownSection from "./showcase-sections/dialog-dropdown-section.svelte";
 	import AlertSection from "./showcase-sections/alert-section.svelte";
 	import BreadcrumbSection from "./showcase-sections/breadcrumb-section.svelte";
@@ -31,6 +32,8 @@
 	import MenuSection from "./showcase-sections/menu-section.svelte";
 	import TimezoneSelectSection from "./showcase-sections/timezone-select-section.svelte";
 	import OverflowListSection from "./showcase-sections/overflow-list-section.svelte";
+	import PanelStackSection from "./showcase-sections/panel-stack-section.svelte";
+	import TreeSection from "./showcase-sections/tree-section.svelte";
 	import SpinnerTextSection from "./showcase-sections/spinner-text-section.svelte";
 	import SidebarSection from "./showcase-sections/sidebar-section.svelte";
 	import MenubarSection from "./showcase-sections/menubar-section.svelte";
@@ -44,6 +47,7 @@
 		{ id: "tabs", label: "Tabs" },
 		{ id: "card", label: "Card" },
 		{ id: "table", label: "Table" },
+		{ id: "data-table", label: "Data Table" },
 		{ id: "dialog-dropdown", label: "Dialog & Dropdown Menu" },
 		{ id: "alert", label: "Alert" },
 		{ id: "breadcrumb", label: "Breadcrumb" },
@@ -62,6 +66,8 @@
 		{ id: "omnibar", label: "Omnibar" },
 		{ id: "sidebar", label: "Sidebar" },
 		{ id: "menubar", label: "Menubar" },
+		{ id: "panel-stack", label: "Panel & Panel Stack" },
+		{ id: "tree", label: "Tree" },
 	];
 </script>
 
@@ -102,6 +108,8 @@
 			<CardSection />
 			<Separator />
 			<TableSection />
+			<Separator />
+			<DataTableSection />
 			<Separator />
 			<DialogDropdownSection />
 			<Separator />
@@ -145,6 +153,9 @@
 			<SidebarSection />
 			<Separator />
 			<MenubarSection />
-		</div>
+			<Separator />
+			<PanelStackSection />
+
+			<TreeSection />
 	</div>
 </Tooltip.Provider>
