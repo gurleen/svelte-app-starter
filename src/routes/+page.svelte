@@ -30,6 +30,7 @@
 	import OmnibarSection from "./showcase-sections/omnibar-section.svelte";
 	import MenuSection from "./showcase-sections/menu-section.svelte";
 	import TimezoneSelectSection from "./showcase-sections/timezone-select-section.svelte";
+	import OverflowListSection from "./showcase-sections/overflow-list-section.svelte";
 	import SpinnerTextSection from "./showcase-sections/spinner-text-section.svelte";
 
 	const sections = [
@@ -132,6 +133,8 @@
 			<MenuSection />
 			<Separator />
 			<TimezoneSelectSection />
+			<Separator />
+			<OverflowListSection />
 			<Separator />
 			<SpinnerTextSection />
 		</div>

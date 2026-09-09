@@ -55,6 +55,7 @@ the trip, and what's left in Blueprint's own component set.
 | `omnibar` | Omnibar | No |
 | `menu` | Menu / MenuItem | No |
 | `timezone-select` | TimezoneSelect | No |
+| `overflow-list` | OverflowList | No |
 
 "Style-guide audited" means the component has been checked against Blueprint's own docs
 dimension-by-dimension (sizing, spacing, states) the way `button.svelte` was. Everything else
@@ -66,7 +67,6 @@ so far only inherits the shared color/spacing/radius/elevation/typography tokens
 | Blueprint component | shadcn-svelte equivalent | How to add |
 |---|---|---|
 | HTMLTable (data-grid variant) | Table (already converted) | Already covered — `table` handles this |
-| OverflowList | — | Build from scratch (no shadcn/Radix equivalent; measurement-driven layout) |
 | Panel / PanelStack | — | Build from scratch (stacked navigable panel view, no shadcn primitive) |
 | Tree | — | Build from scratch or additional dependency (no shadcn primitive; consider a headless tree library) |
 | **From `@blueprintjs/table`** | | |
