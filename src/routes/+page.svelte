@@ -29,6 +29,7 @@
 	import DateNumericTagSection from "./showcase-sections/date-numeric-tag-section.svelte";
 	import OmnibarSection from "./showcase-sections/omnibar-section.svelte";
 	import MenuSection from "./showcase-sections/menu-section.svelte";
+	import TimezoneSelectSection from "./showcase-sections/timezone-select-section.svelte";
 	import SpinnerTextSection from "./showcase-sections/spinner-text-section.svelte";
 
 	const sections = [
@@ -129,6 +130,8 @@
 			<OmnibarSection />
 			<Separator />
 			<MenuSection />
+			<Separator />
+			<TimezoneSelectSection />
 			<Separator />
 			<SpinnerTextSection />
 		</div>

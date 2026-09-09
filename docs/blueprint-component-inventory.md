@@ -53,6 +53,8 @@ the trip, and what's left in Blueprint's own component set.
 | `navbar` | Navbar | No |
 | `editable-text` | EditableText | No |
 | `omnibar` | Omnibar | No |
+| `menu` | Menu / MenuItem | No |
+| `timezone-select` | TimezoneSelect | No |
 
 "Style-guide audited" means the component has been checked against Blueprint's own docs
 dimension-by-dimension (sizing, spacing, states) the way `button.svelte` was. Everything else
@@ -64,12 +66,9 @@ so far only inherits the shared color/spacing/radius/elevation/typography tokens
 | Blueprint component | shadcn-svelte equivalent | How to add |
 |---|---|---|
 | HTMLTable (data-grid variant) | Table (already converted) | Already covered — `table` handles this |
-| Menu / MenuItem (standalone, non-dropdown) | Command / ContextMenu | Combine — `dropdown-menu` primitives already give most of this |
 | OverflowList | — | Build from scratch (no shadcn/Radix equivalent; measurement-driven layout) |
 | Panel / PanelStack | — | Build from scratch (stacked navigable panel view, no shadcn primitive) |
 | Tree | — | Build from scratch or additional dependency (no shadcn primitive; consider a headless tree library) |
-| **From `@blueprintjs/datetime`** | | |
-| TimezoneSelect | — | Build from scratch or additional dependency (needs a timezone data source, e.g. `Intl.supportedValuesOf('timeZone')`) |
 | **From `@blueprintjs/table`** | | |
 | Table (virtualized data grid) | — | Additional dependency (this is a distinct, heavier component from HTMLTable — e.g. TanStack Table for logic + custom virtualized rendering) |
 
