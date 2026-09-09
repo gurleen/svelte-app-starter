@@ -28,6 +28,7 @@
 	import DrawerSliderComboboxSection from "./showcase-sections/drawer-slider-combobox-section.svelte";
 	import DateNumericTagSection from "./showcase-sections/date-numeric-tag-section.svelte";
 	import OmnibarSection from "./showcase-sections/omnibar-section.svelte";
+	import MenuSection from "./showcase-sections/menu-section.svelte";
 	import SpinnerTextSection from "./showcase-sections/spinner-text-section.svelte";
 
 	const sections = [
@@ -126,6 +127,8 @@
 			<Separator />
 			<DateNumericTagSection />
 			<OmnibarSection />
+			<Separator />
+			<MenuSection />
 			<Separator />
 			<SpinnerTextSection />
 		</div>

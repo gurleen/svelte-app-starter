@@ -52,6 +52,7 @@ the trip, and what's left in Blueprint's own component set.
 | `tag-input` | TagInput (input variant) | No |
 | `navbar` | Navbar | No |
 | `editable-text` | EditableText | No |
+| `omnibar` | Omnibar | No |
 
 "Style-guide audited" means the component has been checked against Blueprint's own docs
 dimension-by-dimension (sizing, spacing, states) the way `button.svelte` was. Everything else
@@ -67,8 +68,6 @@ so far only inherits the shared color/spacing/radius/elevation/typography tokens
 | OverflowList | — | Build from scratch (no shadcn/Radix equivalent; measurement-driven layout) |
 | Panel / PanelStack | — | Build from scratch (stacked navigable panel view, no shadcn primitive) |
 | Tree | — | Build from scratch or additional dependency (no shadcn primitive; consider a headless tree library) |
-| **From `@blueprintjs/select`** | | |
-| Omnibar | Command | Use existing shadcn component, restyle (Command already renders as a dialog-hosted palette) |
 | **From `@blueprintjs/datetime`** | | |
 | TimezoneSelect | — | Build from scratch or additional dependency (needs a timezone data source, e.g. `Intl.supportedValuesOf('timeZone')`) |
 | **From `@blueprintjs/table`** | | |
