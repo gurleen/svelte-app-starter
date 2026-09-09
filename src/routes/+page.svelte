@@ -28,6 +28,7 @@
 	import DrawerSliderComboboxSection from "./showcase-sections/drawer-slider-combobox-section.svelte";
 	import DateNumericTagSection from "./showcase-sections/date-numeric-tag-section.svelte";
 	import OmnibarSection from "./showcase-sections/omnibar-section.svelte";
+	import SpinnerTextSection from "./showcase-sections/spinner-text-section.svelte";
 
 	const sections = [
 		{ id: "buttons", label: "Buttons" },
@@ -125,6 +126,8 @@
 			<Separator />
 			<DateNumericTagSection />
 			<OmnibarSection />
+			<Separator />
+			<SpinnerTextSection />
 		</div>
 	</div>
 </Tooltip.Provider>
